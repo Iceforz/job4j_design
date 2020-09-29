@@ -14,13 +14,7 @@ public class SimpleArray<T> implements Iterable<T> {
         }
 
         public void add(T model) {
-            while (count < simpleArray.length) {
-                if (simpleArray[count] == null) {
-                    simpleArray[count] = model;
-                    break;
-                }
-                count++;
-            }
+           simpleArray[count++] = model;
         }
 
         public void set(int index, T model) {
@@ -45,7 +39,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
                 @Override
                 public boolean hasNext() {
-                    return point < simpleArray.length && simpleArray[point] != null;
+                    return point < count;
                     }
 
                     @Override
