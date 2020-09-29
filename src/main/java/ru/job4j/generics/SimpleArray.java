@@ -8,7 +8,6 @@ public class SimpleArray<T> implements Iterable<T> {
     private final T[] simpleArray;
     private int count = 0;
 
-
     public SimpleArray(int size) {
             simpleArray = (T[]) new Object[size];
         }
@@ -23,8 +22,8 @@ public class SimpleArray<T> implements Iterable<T> {
 
             public void remove(int index) {
                 System.arraycopy(simpleArray, Objects.checkIndex
-                        (index + 1, count), simpleArray, index, simpleArray.length - 1 - index);
-                simpleArray[simpleArray.length - 1] = null;
+                        (index + 1, count), simpleArray, index, simpleArray.length - 1 - index
+                ); simpleArray[simpleArray.length - 1] = null;
                 count--;
             }
 
