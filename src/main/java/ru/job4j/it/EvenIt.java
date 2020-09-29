@@ -20,8 +20,9 @@ public class EvenIt implements Iterator<Integer> {
         if (!compile()) {
             return false;
         }
-        if (data[point] % 2 != 0) {
+        while (data[point] % 2 != 0) {
             point++;
+            break;
         }
         return compile();
     }
