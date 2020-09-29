@@ -6,7 +6,7 @@ import static org.hamcrest.Matchers.is;
 import junit.framework.TestCase;
 
 public class SimpleArrayTest {
-    SimpleArray<Integer> simpleArray = new SimpleArray<>(4);
+   private SimpleArray<Integer> simpleArray = new SimpleArray<>(4);
 
     @Test
     public void testSet() {
