@@ -1,4 +1,4 @@
-package it;
+package ru.job4j.it;
 
 import java.util.*;
 import java.util.stream.Collectors;

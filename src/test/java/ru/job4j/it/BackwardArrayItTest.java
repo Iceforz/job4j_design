@@ -1,4 +1,4 @@
-package it;
+package ru.job4j.it;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import java.util.NoSuchElementException;
 
-import junit.framework.TestCase;
+import ru.job4j.it.BackwardArrayIt;
 
 public class BackwardArrayItTest {
     @Test
