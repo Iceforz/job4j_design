@@ -8,12 +8,10 @@ import java.util.Map;
 public class SetCollection<E> implements Iterable<E> {
 
     private SimpleArray<E> array = new SimpleArray<E>(10);
-    private Map<E, Object> map = new LinkedHashMap<>();
 
     public void add(E e) {
-        if (!map.containsKey(e)) {
+        if (!array.get(e)) {
             array.add(e);
-            map.put(e, new Object());
         }
     }
 

@@ -33,6 +33,17 @@ public class SimpleArray<T> implements Iterable<T> {
                 return simpleArray[index];
             }
 
+    public boolean get(T model) {
+        boolean result = false;
+        for (int i = 0; i < count; i++) {
+            if (simpleArray[i].equals(model)) {
+                result = true;
+                break;
+            }
+        }
+        return result;
+    }
+
             @Override
             public Iterator<T> iterator() {
             return new Iterator<T>() {
