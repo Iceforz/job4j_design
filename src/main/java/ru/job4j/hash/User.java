@@ -28,6 +28,7 @@ public class User {
    }
 
    public static void main(String[] args) {
+
       User one = new User("Ilya", 0, new GregorianCalendar(1997, 4, 30));
       User two = new User("Ilya", 0, new GregorianCalendar(1997, 4, 30));
       Map<User, Object> map = new HashMap<>();
