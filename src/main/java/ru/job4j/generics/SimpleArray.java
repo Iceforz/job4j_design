@@ -7,12 +7,14 @@ import java.util.Objects;
 public class SimpleArray<T> implements Iterable<T> {
     private final T[] simpleArray;
     private int count = 0;
+    private int size;
 
     public SimpleArray(int size) {
             simpleArray = (T[]) new Object[size];
+            this.size = size;
         }
 
-        public void add(T model) {
+    public void add(T model) {
            simpleArray[count++] = model;
         }
 
