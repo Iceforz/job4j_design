@@ -1,9 +1,6 @@
 package ru.job4j.hash;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class User {
    private String name;
@@ -16,16 +13,22 @@ public class User {
       this.birthday = birthday;
    }
 
+   @Override
+   public int hashCode() {
+      return Objects.hash(name, children, birthday);
+   }
+
    public static void main(String[] args) {
       User one = new User("Ilya", 0, new GregorianCalendar(1997, 4, 30));
       User two = new User("Ilya", 0, new GregorianCalendar(1997, 4, 30));
-      Set<User> map = new HashSet<>();
-      map.add(one);
-      map.add(two);
-      if (one.equals(two)) {
+      Map<User, Object> map = new HashMap<>();
+      map.put(one, new Object());
+      map.put(two, new Object());
+      if (one.hashCode() == two.hashCode() && one.equals(two)) {
          System.out.println(map);
-      } else {
+      } else if (one.hashCode() == two.hashCode()) {
          System.out.println(123);
       }
    }
 }
+
