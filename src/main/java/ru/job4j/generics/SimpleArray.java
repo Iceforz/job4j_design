@@ -33,10 +33,10 @@ public class SimpleArray<T> implements Iterable<T> {
                 return simpleArray[index];
             }
 
-    public boolean get(T model) {
+    public boolean contains(T model) {
         boolean result = false;
         for (int i = 0; i < count; i++) {
-            if (simpleArray[i].equals(model)) {
+            if (Objects.equals(get(i), model)) {
                 result = true;
                 break;
             }

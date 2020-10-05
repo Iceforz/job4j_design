@@ -10,7 +10,7 @@ public class SetCollection<E> implements Iterable<E> {
     private SimpleArray<E> array = new SimpleArray<E>(10);
 
     public void add(E e) {
-        if (!array.get(e)) {
+        if (!array.contains(e)) {
             array.add(e);
         }
     }
