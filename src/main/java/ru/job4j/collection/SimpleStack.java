@@ -11,7 +11,7 @@ public class SimpleStack<T> {
         while (iterator.hasNext()) {
             element = iterator.next();
         }
-        linked.deleteLast();
+        linked.deleteFirst();
         return element;
     }
 
