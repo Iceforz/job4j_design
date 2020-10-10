@@ -21,5 +21,8 @@ public interface SimpleTree<E> {
         public void add(Node<E> child) {
             this.children.add(child);
         }
+        public List<Node<E>> getChildren() {
+            return children;
+        }
     }
 }

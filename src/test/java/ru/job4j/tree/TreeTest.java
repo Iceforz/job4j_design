@@ -1,6 +1,7 @@
 package ru.job4j.tree;
 import org.junit.Test;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThanOrEqualTo;
 import static org.junit.Assert.*;
 import junit.framework.TestCase;
 
@@ -28,5 +29,15 @@ public class TreeTest {
                 tree.findBy(7).isPresent(),
                 is(false)
         );
+    }
+
+    @Test
+    public void whenTreeIsBinary() {
+        Tree<Integer> tree = new Tree<>(1);
+        tree.add(1, 2);
+        tree.add(1, 3);
+        tree.add(2, 5);
+        tree.add(3, 4);
+        assertThat(tree.isBinary(), is(true));
     }
 }
