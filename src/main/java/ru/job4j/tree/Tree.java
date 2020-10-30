@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Queue;
+import java.util.function.Predicate;
 
 class Tree <E> implements SimpleTree<E> {
     private final Node<E> root;
@@ -29,36 +30,26 @@ class Tree <E> implements SimpleTree<E> {
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        Optional<Node<E>> rsl = Optional.empty();
-        Queue<Node<E>> data = new LinkedList<>();
-        data.offer(this.root);
-        while (!data.isEmpty()) {
-            Node<E> el = data.poll();
-            if (el.value.equals(value)) {
-                rsl = Optional.of(el);
-                break;
-            }
-            data.addAll(el.children);
-        }
-        return rsl;
+        return find(x ->x.value.equals(value));
     }
 
     public boolean isBinary() {
-        boolean result = true;
-        Queue<Node<E>> data = new LinkedList<>();
-        data.offer(this.root);
-        while (!data.isEmpty()) {
-            Node<E> el = data.poll();
-            List<Node<E>> children = el.getChildren();
-            if (children.size() > 2) {
-                result = false;
-                break;
-            }
-            for (Node<E> child : children) {
-                data.offer(child);
-            }
-        }
-        return result;
+        return find(x -> x.children.size() > 2).isEmpty();
+    }
+
+        private Optional<Node<E>> find(Predicate<Node<E>> predicate) {
+            Optional<Node<E>> rsl = Optional.empty();
+            Queue<Node<E>> data = new LinkedList<>();
+            data.offer(this.root);
+            while (!data.isEmpty()) {
+                Node<E> el = data.poll();
+                    if (predicate.test(el)) {
+                        rsl = Optional.of(el);
+                        break;
+                    }
+                    data.addAll(el.children);
+                }
+                return rsl;
     }
 }
 
