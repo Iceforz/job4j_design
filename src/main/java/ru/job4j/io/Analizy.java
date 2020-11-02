@@ -8,8 +8,8 @@ public class Analizy {
     private static List<String> source = new ArrayList<>();
     private static List<String> target = new ArrayList<>();
 
-    private static void unavailable() {
-        toList();
+    static void unavailable(String xsource, String ytarget) {
+        toList(xsource);
         String trigger = null;
         String end = null;
         String result = null;
@@ -25,30 +25,32 @@ public class Analizy {
                 target.add(result);
             }
         }
-        toFile();
+        toFile(ytarget);
     }
 
-    private static void toList() {
-        try (BufferedReader in = new BufferedReader(new FileReader("server.log.txt"))) {
+    private static void toList(String xsource) {
+        try (BufferedReader in = new BufferedReader(new FileReader(xsource))) {
             in.lines().forEach(source::add);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private static void toFile() {
+    private static void toFile(String ytarget) {
         try (PrintWriter out = new PrintWriter(new BufferedOutputStream(
-                new FileOutputStream("server.log.after.txt")))) {
+                new FileOutputStream(ytarget)))) {
             target.forEach(value -> out.write(value + "\n"));
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-        public static void main(String[] args) {
-            unavailable();
-        }
+    public static void main(String[] args) {
+        unavailable("server.log.txt", "server.log.after.txt");
     }
+}
+
+
 
 
 /*
