@@ -14,12 +14,14 @@ public class SimpleHashMapTest {
         boolean result = map.insert("one", 1);
         assertThat(result, is(true));
     }
+
     @Test
     public void whenAddThenSizeGrowUp() {
         SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
         map.insert("one", 1);
         assertThat(map.getSize(), is(1));
     }
+
     @Test
     public void whenAdd2EqualsKeyThenFalse() {
         SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
@@ -27,6 +29,7 @@ public class SimpleHashMapTest {
         boolean result = map.insert("one", 2);
         assertThat(result, is(false));
     }
+
     @Test
     public void whenAdd2ElementThenGetFirst() {
         SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
@@ -35,6 +38,7 @@ public class SimpleHashMapTest {
         int result = map.get("one");
         assertThat(result, is(1));
     }
+
     @Test
     public void whenDeleteThenTrue() {
         SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
@@ -43,6 +47,7 @@ public class SimpleHashMapTest {
         boolean result = map.delete("one");
         assertThat(result, is(true));
     }
+
     @Test
     public void whenDeleteThenSizeCountDown() {
         SimpleHashMap<String, Integer> map = new SimpleHashMap<>();

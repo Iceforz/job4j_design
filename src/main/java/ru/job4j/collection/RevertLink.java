@@ -2,7 +2,7 @@ package ru.job4j.collection;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class RevertLink <T> implements Iterable<T> {
+public class RevertLink<T> implements Iterable<T> {
     private Node<T> head;
 
     public void add(T value) {
@@ -34,7 +34,7 @@ public class RevertLink <T> implements Iterable<T> {
     @Override
     public Iterator<T> iterator() {
         return new Iterator<T>() {
-            Node<T> node = head;
+           private Node<T> node = head;
 
             @Override
             public boolean hasNext() {
@@ -54,8 +54,8 @@ public class RevertLink <T> implements Iterable<T> {
     }
 
     private static class Node<T> {
-        T value;
-        Node<T> next;
+       private T value;
+       private Node<T> next;
 
         public Node(T value, Node<T> next) {
             this.value = value;

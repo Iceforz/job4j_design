@@ -27,8 +27,10 @@ public class User {
          return false;
       }
       User user = (User) o;
-      return children == user.children &&
-              Objects.equals(name, user.name) &&
+      return children == user.children
+              &&
+              Objects.equals(name, user.name)
+              &&
               Objects.equals(birthday, user.birthday);
    }
 
@@ -41,7 +43,7 @@ public class User {
       map.put(two, new Object());
       if (one.hashCode() == two.hashCode() && one.equals(two)) {
          System.out.println(map);
-      } else if ( one.equals(two)) {
+      } else if (one.equals(two)) {
          System.out.println(123);
       }
    }

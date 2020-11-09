@@ -36,6 +36,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
                         }
                         return start != size;
                     }
+
                     public int getSize() {
                         return size;
                     }
@@ -47,10 +48,12 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
                             size++;
                         }
                     }
+
                     private int indexOf(K key) {
                         int hash = Objects.hashCode(key);
                         return hash % table.length;
                     }
+
                     private void resize() {
                         if (table == null) {
                             table = new Node[16];
@@ -59,6 +62,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
                             table = replaceItem(table, new Node[newSize]);
                         }
                     }
+
                     private Node<K, V>[] replaceItem(Node<K, V>[] oldTab, Node<K, V>[] newTab) {
                         for (int i = 0; i < oldTab.length; i++) {
                             int index = oldTab[i].hash % newTab.length;
@@ -98,6 +102,7 @@ public class SimpleHashMap<K, V> implements Iterable<SimpleHashMap.Node<K, V>> {
                             private K key;
                             private V value;
                             private int hash;
+
                             public Node(K key, V value, int hash) {
                                 this.key = key;
                                 this.value = value;

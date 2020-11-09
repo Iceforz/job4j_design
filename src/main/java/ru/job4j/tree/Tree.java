@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.function.Predicate;
 
-class Tree <E> implements SimpleTree<E> {
+class Tree<E> implements SimpleTree<E> {
     private final Node<E> root;
 
     Tree(final E root) {
@@ -30,7 +30,7 @@ class Tree <E> implements SimpleTree<E> {
 
     @Override
     public Optional<Node<E>> findBy(E value) {
-        return find(x ->x.value.equals(value));
+        return find(x -> x.value.equals(value));
     }
 
     public boolean isBinary() {

@@ -21,6 +21,7 @@ public class ListUtilsTest {
         List<Integer> input = new ArrayList<>(Arrays.asList(1, 3));
         ListUtils.addBefore(input, 3, 2);
     }
+
     @Test
     public void whenAddAfter() {
         List<Integer> input = new ArrayList<>(Arrays.asList(1, 3));

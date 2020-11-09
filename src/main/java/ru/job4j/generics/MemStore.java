@@ -32,7 +32,6 @@ public final class MemStore<T extends Base> implements Store<T> {
         return rsl;
     }
 
-
     @Override
     public boolean delete(String id) {
         int point = indexOf(id);

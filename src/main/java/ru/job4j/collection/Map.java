@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Map<K, V> implements Iterable {
 
-    static final float loadFactor = 0.75f;
+    static final float LoadFactor = 0.75f;
     private Node<K, V>[] table;
     private int capacity = 16;
     private int size = 0;
@@ -49,7 +49,6 @@ public class Map<K, V> implements Iterable {
                 newTable = (Node<K, V>[]) new Node[capacity];
             } else {
                 capacity = capacity << 1;
-                table = Arrays.copyOf(table, capacity);
                 newTable = (Node<K, V>[]) new Node[capacity];
                 for (Node<K, V> node : table) {
                     if (node != null) {
@@ -61,9 +60,8 @@ public class Map<K, V> implements Iterable {
             return newTable;
         }
 
-
     public boolean insert(K key, V value) {
-        if (table == null || size > loadFactor * capacity) {
+        if (table == null || size > LoadFactor * capacity) {
             resize();
         }
         Node<K, V> n = new Node<>(hash(key), key, value);
@@ -109,7 +107,7 @@ public class Map<K, V> implements Iterable {
                 if (size == 0) {
                     return false;
                 }
-                for (int i = point; i <= size; i++) {
+                for (int i = point; i <= capacity; i++) {
                     if (table[i] != null) {
                         point = i;
                         return true;
