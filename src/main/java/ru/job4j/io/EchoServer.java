@@ -10,8 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class EchoServer {
-    private static final Logger LOG = LoggerFactory.getLogger(UsageLog4j.class.getName());
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         try (ServerSocket server = new ServerSocket(9000)) {
             while (true) {
                 Socket socket = server.accept();
@@ -19,25 +18,18 @@ public class EchoServer {
                      BufferedReader in = new BufferedReader(
                              new InputStreamReader(socket.getInputStream()))) {
                     String str;
-                    String message = "";
-                    while (!(str = in.readLine()).isEmpty()) {
-                        if (str.contains("/?msg=")) {
-                            message = str.split(" ")[1].split("=")[1];
-                        }
+                    do {
+                        str = in.readLine();
                         System.out.println(str);
-                    }
-                    out.write("HTTP/1.1 200 OK\r\n\r\n".getBytes());
-                    if (message.equals("Hello")) {
-                        out.write("Hello, dear friend.".getBytes());
-                    } else if (message.equals("Exit")) {
-                        break;
-                    } else {
-                        out.write(message.getBytes());
-                    }
+                        if (str.contains("Bye")) {
+                            server.close();
+                        }
+                    } while (!str.isEmpty());
+                    out.write("HTTP/1.1 200 OK\r\n\\".getBytes());
+                } catch (IOException e) {
+                    System.out.println("Stop");
                 }
             }
-        } catch (IOException e) {
-            LOG.debug("Exception in EchoServer", e);
         }
     }
 }
