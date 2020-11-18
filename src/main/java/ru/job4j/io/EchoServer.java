@@ -32,7 +32,7 @@ public class EchoServer {
                     } else if (message.equals("Exit")) {
                         break;
                     } else {
-                        out.write("What".getBytes());
+                        out.write(message.getBytes());
                     }
                 }
             }
