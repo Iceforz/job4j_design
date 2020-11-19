@@ -1,6 +1,8 @@
 package ru.job4j.serialization.json;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -17,6 +19,26 @@ public class Company {
         this.liquidity = liquidity;
         this.politics = politics;
         this.owners = owners;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getBased() {
+        return based;
+    }
+
+    public boolean isLiquidity() {
+        return liquidity;
+    }
+
+    public Politics getPolitics() {
+        return politics;
+    }
+
+    public Person[] getOwners() {
+        return owners;
     }
 
     @Override
@@ -41,6 +63,19 @@ public class Company {
         System.out.println(companyJson);
         final Company companyMod = gson.fromJson(companyJson, Company.class);
         System.out.println(companyMod);
+        System.out.println();
+        final JSONObject jsonCompany = new JSONObject();
+        jsonCompany.put("name", Universal.getName());
+        jsonCompany.put("based", Universal.getBased());
+        jsonCompany.put("liquidity", Universal.isLiquidity());
+        jsonCompany.put("politics", new JSONObject("{\"name\":\"democrat\"}"));
+        JSONArray owners = new JSONArray();
+        owners.put(new JSONObject("{\"name\":\"Fill\",\"age\":32}"));
+        owners.put(new JSONObject("{\"name\":\"Mary\",\"age\":23}"));
+        jsonCompany.put("owners", owners);
+        System.out.println(jsonCompany.toString());
     }
 }
+
+
 
