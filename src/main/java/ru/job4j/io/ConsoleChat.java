@@ -19,9 +19,6 @@ import java.util.stream.Collectors;
 public class ConsoleChat {
     private final String path = "./src/main/data/path.txt";
     private String botAnswers = "./src/main/data/Answers.txt";
-    private final String FINISH = "закончить";
-    private final String STOP = "стоп";
-    private final String CONTINUE = "продолжить";
 
     public void run() {
         List<String> strList = new ArrayList<>();
@@ -31,8 +28,11 @@ public class ConsoleChat {
             boolean isRespond = true;
             String inputLine = scanner.nextLine();
 
-            while (!inputLine.equals(FINISH)) {
-                isRespond = !inputLine.equals(STOP) && (inputLine.equals(CONTINUE) || isRespond);
+            String finish = "закончить";
+            while (!inputLine.equals(finish)) {
+                String aContinue = "продолжить";
+                String stop = "стоп";
+                isRespond = !inputLine.equals(stop) && (inputLine.equals(aContinue) || isRespond);
                 strList.add(inputLine);
                 if (isRespond) {
                     answer = getRandomAnswer();
@@ -57,8 +57,10 @@ public class ConsoleChat {
         }
         return answer;
     }
+
     private void printToFile(List<String> outputStrList) {
-        try (PrintWriter out = new PrintWriter(new BufferedOutputStream(new FileOutputStream(path, true)))) {
+        try (PrintWriter out = new PrintWriter(
+                new BufferedOutputStream(new FileOutputStream(path, true)))) {
             outputStrList.forEach(s -> out.write(s + System.lineSeparator()));
         } catch (IOException e) {
             e.printStackTrace();

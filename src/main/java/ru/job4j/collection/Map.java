@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Map<K, V> implements Iterable {
 
-    static final float LoadFactor = 0.75f;
+    private static float load = 0.75f;
     private Node<K, V>[] table;
     private int capacity = 16;
     private int size = 0;
@@ -61,7 +61,7 @@ public class Map<K, V> implements Iterable {
         }
 
     public boolean insert(K key, V value) {
-        if (table == null || size > LoadFactor * capacity) {
+        if (table == null || size > load * capacity) {
             resize();
         }
         Node<K, V> n = new Node<>(hash(key), key, value);

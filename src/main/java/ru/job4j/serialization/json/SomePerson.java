@@ -30,7 +30,8 @@ public class SomePerson {
     }
 
     public static void main(String[] args) {
-        final SomePerson person = new SomePerson(false, 30, new Contactt("11-111"), "Worker", "Married");
+        final SomePerson person = new SomePerson(
+                false, 30, new Contactt("11-111"), "Worker", "Married");
 
         /* Преобразуем объект person в json-строку. */
         final Gson gson = new GsonBuilder().create();

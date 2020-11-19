@@ -16,7 +16,10 @@ public class UsageLog4j {
         boolean target = false;
         long y = 22;
         short z = 12;
-        LOG.debug("User info name : {}, age : {}, float : {}, double : {}, char : {}, boolean : {}, long : {}, short : {}", name, age, x, b, sex, target, y, z);
+        LOG.debug("User info name : {}, age : {}, float : {},"
+                        +
+                " double : {}, char : {}, boolean : {}, long : {}, short : {}",
+                name, age, x, b, sex, target, y, z);
 
     }
 }
