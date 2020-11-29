@@ -4,10 +4,10 @@ where t.name like 'СЫР';
 
 select product.id, product.name, type_id, expired_date, price, amount
 from product join type t on t.id = product.type_id
-where t.name like 'мороженное';
+where t.name like '%мороженное%';
 
 select * from product
-where date_part('month', expired_date) = date_part('month', current_date) - 1;
+where expired_date <= current_date + interval '1 month'; 
 
 select product.name
 from product join type t on t.id = product.type_id
